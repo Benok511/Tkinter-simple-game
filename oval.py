@@ -1,5 +1,6 @@
 from random import randint
 import math
+from datetime import datetime
 class Oval:
     '''
         Class for an Oval x and y represent the center coords
@@ -16,7 +17,8 @@ class Oval:
         self._x1 = self._x + self._radius
         self._y0 = self._y - self._radius
         self._y1 = self._y + self._radius
-
+        self._start = datetime.now()
+        self._end = None
     '''
     getters for all vars
     '''
@@ -48,6 +50,27 @@ class Oval:
     def y1(self):
         return self._y1
     
+    @property
+    def start(self):
+        return self._start
+    
+    @start.setter
+    def start(self,time):
+        if type(time) is not datetime and time is not None:
+            raise TypeError("start must be of type datetime")
+    
+    @property
+    def end(self):
+        return self._end
+    
+    @end.setter
+    def end(self,time):
+        if type(time) is not datetime and time is not None:
+            raise TypeError("end must be of type datetime")
+
+        self._end = time
+        
+    
     def new_oval(self):
         '''
         Method to create 'new' oval
@@ -61,6 +84,8 @@ class Oval:
         self._x1 = self._x + self._radius
         self._y0 = self._y - self._radius
         self._y1 = self._y + self._radius
+        self.start = datetime.now()
+        self.end = None
 
 
     def inOval(self,x,y):

@@ -17,11 +17,9 @@ end = 0
 oval = Oval()
 
 def clickOval(event):
-    global start
-    global end
     xpos = event.x
     ypos = event.y
-    end = datetime.now()
+    oval.end = datetime.now()
     if oval.inOval(xpos,ypos):
         
         print('Hit')
@@ -29,9 +27,7 @@ def clickOval(event):
     else:
         print('miss')
 
-    print(f'Time: {end - start}')
-    end = 0
-    start = 0
+    print(f'Time: {oval.end - oval.start}')
     canvas.delete('oval')
     drawOval()
     
@@ -39,10 +35,9 @@ def clickOval(event):
 
 def drawOval():
     sleep(randint(5,10))
-    global start
     oval.new_oval()
     canvas.create_oval(oval.x0,oval.y0,oval.x1,oval.y1,fill='blue',tags='oval') #setting a tag so its easy to delete with canvas.delete('oval')
-    start = datetime.now()
+    
     
 
 root = Tk()
