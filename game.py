@@ -47,11 +47,6 @@ canvas.pack()
 canvas.bind("<Button-1>",clickOval)
 drawOval()
 
-
-
-
-
-
 root.mainloop()
 
 
