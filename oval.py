@@ -18,13 +18,23 @@ class Oval:
         self._y0 = self._y - self._radius
         self._y1 = self._y + self._radius
         self._start = datetime.now()
-        self._end = None
+        self._end = datetime.now()
+        self._onScreen = False
+
+
     '''
     getters for all vars
     '''
     @property
     def radius(self):
         return self._radius
+    @radius.setter
+    def radius(self,radius):
+        if type(radius) is not int:
+            raise TypeError("radius must be of type int")
+        
+        self._radius = radius
+
 
     @property
     def x(self):
@@ -33,6 +43,7 @@ class Oval:
     def x(self,x):
         if type(x) is not int:
             raise TypeError("x must be of type int")
+        self._x = x
 
     @property
     def y(self):
@@ -41,6 +52,7 @@ class Oval:
     def y(self,y):
         if type(y) is not int:
             raise TypeError("y must be of type int")
+        self._y = y
 
     @property
     def x0(self):
@@ -49,6 +61,7 @@ class Oval:
     def x0(self,x0):
         if type(x0) is not int:
             raise TypeError("x0 must be of type int")
+        self._x0 = x0
     
 
     @property
@@ -58,6 +71,7 @@ class Oval:
     def y0(self,y0):
         if type(y0) is not int:
             raise TypeError("y0 must be of type int")
+        self._y0 = y0
 
     @property
     def x1(self):
@@ -66,6 +80,7 @@ class Oval:
     def x1(self,x1):
         if type(x1) is not int:
             raise TypeError("x1 must be of type int")
+        self._x1 = x1
 
     @property
     def y1(self):
@@ -75,6 +90,7 @@ class Oval:
     def y1(self,y1):
         if type(y1) is not int:
             raise TypeError("y1 must be of type int")
+        self._y1 = y1
     
     @property
     def start(self):
@@ -96,6 +112,16 @@ class Oval:
             raise TypeError("end must be of type datetime")
 
         self._end = time
+    
+    @property
+    def onScreen(self):
+        return self._onScreen
+    
+    @onScreen.setter
+    def onScreen(self,onScreen):
+        if type(onScreen) is not bool:
+            raise TypeError("onScreen must be of type bool")
+        self._onScreen = onScreen
         
     
     def new_oval(self):
@@ -113,6 +139,7 @@ class Oval:
         self.y1 = self.y + self.radius
         self.start = datetime.now()
         self.end = None
+        self.onScreen = True
 
 
     def inOval(self,x,y):
