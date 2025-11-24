@@ -11,8 +11,8 @@ class Oval:
     def __init__(self):
         
         self._radius = randint(10,30)
-        self._x = randint(10,250)
-        self._y = randint(10,250)
+        self._x = randint(30,250)
+        self._y = randint(30,250)
         self._x0 = self._x - self._radius
         self._x1 = self._x + self._radius
         self._y0 = self._y - self._radius

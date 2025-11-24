@@ -1,4 +1,4 @@
-from tkinter import Tk,Canvas
+from tkinter import Tk,Canvas,Label
 from random import randint
 from datetime import datetime
 from time import sleep
@@ -25,9 +25,11 @@ def clickOval(event):
         if oval.inOval(xpos,ypos):
             
             print('Hit')
+            label.config(text=f'Hit! time {oval.end - oval.start}')
         
         else:
             print('miss')
+            label.config(text=f'Miss! time {oval.end - oval.start}')
 
         print(f'Time: {oval.end - oval.start}')
         canvas.delete('oval')
@@ -48,7 +50,9 @@ def drawOval():
 
 root = Tk()
 canvas = Canvas(root,bg='white',height=300,width=300)
+label = Label(root,text='',font='Calibri 20')
 canvas.pack()
+label.pack()
 
 canvas.bind("<Button-1>",clickOval)
 drawOval()
