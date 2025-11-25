@@ -1,7 +1,6 @@
 from tkinter import Tk,Canvas,Label
 from random import randint
 from datetime import datetime
-from time import sleep
 from oval import Oval
 
 '''
@@ -12,12 +11,16 @@ had to read into the tkinter canvas docs to find out how to clear it to find out
 after quite a lot of buggy iterations and some research and you bringing it up in the lecture I decided to use .after instead
 of sleep as it didnt freeze my program and make it sluggish.
 https://stackoverflow.com/questions/10393886/tkinter-and-time-sleep
-'''
 
+also had to look up how to make variable global within a function
+https://www.w3schools.com/python/python_variables_global.asp
+'''
+score = 0
 
 oval = Oval()
 
 def clickOval(event):
+    global score
     if oval.onScreen:
         xpos = event.x
         ypos = event.y
@@ -26,6 +29,8 @@ def clickOval(event):
             
             print('Hit')
             label.config(text=f'Hit! time {oval.end - oval.start}')
+            score += 1
+            scoreLabel.config(text=f'Score: {score}')
         
         else:
             print('miss')
@@ -51,8 +56,10 @@ def drawOval():
 root = Tk()
 canvas = Canvas(root,bg='white',height=300,width=300)
 label = Label(root,text='',font='Calibri 20')
+scoreLabel = Label(root,text='Score: 0')
 canvas.pack()
 label.pack()
+scoreLabel.pack()
 
 canvas.bind("<Button-1>",clickOval)
 drawOval()
