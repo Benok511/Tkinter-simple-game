@@ -4,8 +4,14 @@ from datetime import datetime
 class Oval:
     '''
         Class for an Oval x and y represent the center coords
-        then x0,x1,y0,y1 represend 4 points on the circle to be used
+        then x0,x1,y0,y1 represend 2 points on the circle e.g x0 = x - radius to be used
         in the create_oval method in the main tk loop.
+        
+        I also grouped start on end time as i tried to define them in the main program but had problems with local/global errors
+
+        onScreen is used to prevent multiple ovals from showing up at the same time in the event of spam clicking
+        edge case i found from messing around with the program
+        
     '''
 
     def __init__(self):
@@ -23,7 +29,7 @@ class Oval:
 
 
     '''
-    getters for all vars
+    getters and setters for all vars
     '''
     @property
     def radius(self):
