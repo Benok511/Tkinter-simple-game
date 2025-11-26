@@ -14,6 +14,9 @@ of sleep as it didnt freeze my program and make it sluggish.
 https://stackoverflow.com/questions/10393886/tkinter-and-time-sleep
 
 i used objects to sort of act like global variables for the GameManager class
+then for oval group time tracking and the coordinates together in one simple object.
+
+game runs continuosly after first click
 '''
 
 manager = GameManager()
@@ -21,9 +24,11 @@ oval = Oval()
 
 def clickOval(event):
     # check if game has started if not set it to started and then call the first wait for oval
+    # purpose of this is to only call the drawOval rather than the rest of the functionality as onScreen
+    # will always be false to start
     if manager.started:
         
-        # if theres a click and its on screen then check if its been clicked print the time
+        # if theres a click and oval is on screen then check if its been clicked print the time
         # and then call the next oval to be drawn
         if oval.onScreen:
             xpos = event.x
